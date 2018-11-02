@@ -20,19 +20,19 @@
 		// Important Variables for Customization
 
 		// This should be the API key for your account when you sign up with Mapbox
-		var apiKey = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+		var apiKey = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 		// Here we create the map layers - in this case, a satellite layer
 		var layerIds = [
 			'satellite-streets-v10',
-		]
+		];
 		// This defines where the map is centered when the page is first shown
 		// NOTE! The coordinates are latitude first, then longitude second (latitudes should range from 0 to 90; longitudes should range from 180 to -180)
-		var center = [1.3417977, 103.9636011]
+		var center = [1.3417977, 103.9636011];
 		// This defines the zoom level of the map when the page is first shown
-		var zoom = 17
+		var zoom = 17;
 
 		// This is the attribution/reference data for Leaflet, OpenStreetMap and Mapbox, which appears at the bottom of the map
-		var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+		var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 
 		// The remaining part is to setup the Leaflet map using the variables above
 
@@ -45,8 +45,8 @@
 					apiKey: apiKey,
 					style: layerId,
 				}
-			)
-		})
+			);
+		});
 
 		// Here we create the map
 		// - we give it the layers

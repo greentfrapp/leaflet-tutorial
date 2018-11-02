@@ -20,31 +20,30 @@
 		// Important Variables for Customization
 
 		// This should be the API key for your account when you sign up with Mapbox
-		var apiKey = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+		var apiKey = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 		// Here we create the map layers - in this case, a satellite layer
 		var layerIds = [
 			'satellite-streets-v10',
 			'light-v9',
-		]
+		];
 		// Here we define the names for the legend
 		var layerNames = [
 			'Satellite',
 			'Streets',
-		]
+		];
 		// This defines where the map is centered when the page is first shown
 		// NOTE! The coordinates are latitude first, then longitude second (latitudes should range from 0 to 90; longitudes should range from 180 to -180)
-		var center = [1.3417977, 103.9636011]
+		var center = [1.3417977, 103.9636011];
 		// This defines the zoom level of the map when the page is first shown
-		var zoom = 17
+		var zoom = 17;
 
 		// This is the attribution/reference data for Leaflet, OpenStreetMap and Mapbox, which appears at the bottom of the map
-		var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+		var attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 
 		// The remaining part is to setup the Leaflet map using the variables above
 
 		// This actually adds the layer that we named above
 		var layers = layerIds.map((layerId, i) => {
-			
 			return L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{style}/tiles/256/{z}/{x}/{y}?access_token={apiKey}',
 					{
 					maxZoom: 20, // maximum zoom
@@ -53,7 +52,7 @@
 					style: layerId,
 				}
 			)
-		})
+		});
 
 		// Here we create the map
 		// - we give it the layers
@@ -65,12 +64,14 @@
 		);
 		
 		// This creates the top right button to change between layers
-		var baseMaps = {}
+		var baseMaps = {};
 		layers.map((layer, i) => {
 			baseMaps[layerNames[i]] = layers[i]
-		})
+		});
 		L.control.layers(baseMaps).addTo(map);
 
+		// This is the geojson code that contains information about the shapes
+		// We will typically put this in a separate .js file
 		var rectangle = {
 			"type": "FeatureCollection",
 			"features": [
@@ -106,18 +107,19 @@
 					}
 				}
 			]
-		}
+		};
+		// The look of the shapes eg. border color, fill color etc.
 		var params = {
 			style: {
 				weight: 5,
 				opacity: 1,
-				color: '#f00',
-				dashArray: '0',
+				color: '#ff0000',
 				fillOpacity: 0.5,
-				fillColor: '#00f',
+				fillColor: '#0000ff',
 			}
-		}
-		var geojson = L.geoJson(rectangle, params).addTo(map)
+		};
+		// This line adds the geojson shapes to the map
+		var geojson = L.geoJson(rectangle, params).addTo(map);
 
 	</script>
 </body>
